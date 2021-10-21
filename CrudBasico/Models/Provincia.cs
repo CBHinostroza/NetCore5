@@ -5,12 +5,8 @@ using System.Threading.Tasks;
 
 namespace CrudBasico.Models
 {
-    public interface IAmigo
+    public enum Provincia
     {
-
-        List<Amigo> Listar();
-        Amigo GetAmigo(int id);
-
-        Amigo Nuevo(Amigo amigo);
+       Ninguna,Lima,Huaraz,Huacho,Ves
     }
 }

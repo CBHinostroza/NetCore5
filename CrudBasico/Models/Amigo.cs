@@ -14,15 +14,17 @@ namespace CrudBasico.Models
 
         public string correo { get; set; }
 
+        public Provincia provincia { get; set; }
 
         public Amigo()
         {
         }
-        public Amigo(int id, string nombres, string correo)
+        public Amigo(int id, string nombres, string correo, Provincia provincia)
         {
             this.id = id;
             this.nombres = nombres;
             this.correo = correo;
+            this.provincia = provincia;
         }
     }
 }

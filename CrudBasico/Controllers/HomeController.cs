@@ -17,14 +17,29 @@ namespace CrudBasico.Controllers
             return View(metodos.Listar());
         }
 
+        [Route("Home/Details/{id?}")]
+        [HttpGet]
         public ViewResult Details(int? id)
         {
+            /*si es nulo, forzamos a que busque los
+             detalles del amigo 1*/
             var amigo = metodos.GetAmigo(id??1);
 
             return View(amigo);
         }
 
-        [Route("Home/Crear")]
+
+        [Route("Home/Create")]
+        [HttpPost]
+        public RedirectToActionResult Create(Amigo a)
+        {
+            var amigo = metodos.Nuevo(a);
+            /*Redigirmos a la vista detalle y le pasamos el parametro id*/
+            return RedirectToAction("Details", new { id = amigo.id });
+        }
+
+        [Route("Home/Create")]
+        [HttpGet]
         public ViewResult Create()
         {
             return View();
@@ -41,5 +56,6 @@ namespace CrudBasico.Controllers
 
             return amigo;
         }
+
     }
 }

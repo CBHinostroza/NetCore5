@@ -7,18 +7,20 @@
             <td>Código</td>
             <td>Nombres</td>
             <td>Correo</td>
+            <td>Provincia</td>
             <td>Accion</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.id</td>
-                <td>@item.nombres</td>
-                <td>@item.correo</td>
-                <td><a class="btn btn-primary" asp-controller="Home" asp-action="Details" asp-route-id="@item.id">Detalle</a></td>
-            </tr>
+        <tr>
+            <td>@item.id</td>
+            <td>@item.nombres</td>
+            <td>@item.correo</td>
+            <td>@item.provincia</td>
+            <td><a class="btn btn-primary" asp-controller="Home" asp-action="Details" asp-route-id="@item.id">Detalle</a></td>
+        </tr>
         }
     </tbody>
 </table>
