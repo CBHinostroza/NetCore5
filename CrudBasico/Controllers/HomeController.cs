@@ -24,6 +24,11 @@ namespace CrudBasico.Controllers
             return View(amigo);
         }
 
+        [Route("Home/Crear")]
+        public ViewResult Create()
+        {
+            return View();
+        }
 
         public List<Amigo> Lista()
         {
