@@ -1,0 +1,20 @@
+﻿using CrudBasico.Entidades;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CrudBasico.Data
+{
+    public class ApplicationDbContext:DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
+        {
+
+        }
+
+        public DbSet<TBT_EMPRESA> TBT_EMPRESA { get; set; }
+
+    }
+}

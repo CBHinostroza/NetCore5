@@ -9,8 +9,14 @@ namespace CrudBasico.Controllers
 {
     public class HomeController : Controller
     {
+        private IAmigo metodos;
+        //private IAmigo metodos = new AmigoImpl();
 
-        private IAmigo metodos = new AmigoImpl();
+        public HomeController(IAmigo metodos)
+        {
+            this.metodos = metodos;
+        }
+
 
         public ViewResult Index()
         {
@@ -23,20 +29,10 @@ namespace CrudBasico.Controllers
         {
             /*si es nulo, forzamos a que busque los
              detalles del amigo 1*/
-            var amigo = metodos.GetAmigo(id??1);
-
+            Amigo amigo = metodos.GetAmigo(id??2);
             return View(amigo);
         }
 
-
-        [Route("Home/Create")]
-        [HttpPost]
-        public RedirectToActionResult Create(Amigo a)
-        {
-            var amigo = metodos.Nuevo(a);
-            /*Redigirmos a la vista detalle y le pasamos el parametro id*/
-            return RedirectToAction("Details", new { id = amigo.id });
-        }
 
         [Route("Home/Create")]
         [HttpGet]
@@ -44,6 +40,16 @@ namespace CrudBasico.Controllers
         {
             return View();
         }
+
+        [Route("Home/Create")]
+        [HttpPost]
+        public RedirectToActionResult Create(Amigo a)
+        {
+            Amigo amigo = metodos.Nuevo(a);
+            /*Redigirmos a la vista detalle y le pasamos el parametro id*/
+            return RedirectToAction("details", new { id = amigo.id });
+        }
+
 
         public List<Amigo> Lista()
         {
