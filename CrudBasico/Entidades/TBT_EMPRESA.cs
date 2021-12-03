@@ -14,6 +14,7 @@ namespace CrudBasico.Entidades
         public string NOM_EMPRESA { get; set; }
         public string RUC_EMPRESA { get; set; }
         public string DIR_EMPRESA { get; set; }
+        public string DES_IMAGE { get; set; }
 
         [NotMapped]
         public string NOM_ERROR { get; set; }
