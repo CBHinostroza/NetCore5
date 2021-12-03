@@ -14,13 +14,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "F:\Proyectos con Cshart\NetCore\CrudBasico\CrudBasico\Views\_ViewImports.cshtml"
+using CrudBasico.Entidades;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "F:\Proyectos con Cshart\NetCore\CrudBasico\CrudBasico\Views\_ViewImports.cshtml"
 using CrudBasico.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d2d2962e819eecc0acf51d8cf33aa85d4f65fbbb", @"/Views/Home/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1a672b712eaacfa08e6224b6d7ca92b5798936d5", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c114e47fb861f6014022d6931d79779e2faadbd2", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Amigo>
     {
         #line hidden
@@ -57,7 +64,7 @@ using CrudBasico.Models;
 #line hidden
 #nullable disable
             WriteLiteral("<h1>Details</h1>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d2d2962e819eecc0acf51d8cf33aa85d4f65fbbb3252", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d2d2962e819eecc0acf51d8cf33aa85d4f65fbbb3441", async() => {
                 WriteLiteral("\r\n    <div class=\"form-group\">\r\n        <label>Codigo</label>\r\n        <input class=\"form-control\" type=\"text\"");
                 BeginWriteAttribute("value", " value=\"", 187, "\"", 204, 1);
 #nullable restore

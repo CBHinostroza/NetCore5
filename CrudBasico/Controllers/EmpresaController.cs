@@ -1,5 +1,6 @@
 ﻿using CrudBasico.Data;
 using CrudBasico.Entidades;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,23 +15,38 @@ namespace CrudBasico.Controllers
 
         private readonly ApplicationDbContext _context;
 
-        
-        [HttpGet("ListarTodos")]
-        public List<TBT_EMPRESA> Listar()
+        private readonly IWebHostEnvironment _hostingEnvironment;
+
+        public EmpresaController(ApplicationDbContext context,IWebHostEnvironment hostingEnvironment)
         {
-            return _context.TBT_EMPRESA.ToList<TBT_EMPRESA>();
+            _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
-        [Route("ListarPorEmpresa/{id}")]
-        public TBT_EMPRESA ListarPorEmpresa(int id)
+        [HttpGet("Listar")]
+        public ViewResult Listar()
+        {
+            var list = _context.TBT_EMPRESA.ToList<TBT_EMPRESA>();
+            return View(list);
+        }
+
+        [HttpGet("Crear/{id}")]
+        public ViewResult Crear(int id)
         {
             var tBT_EMPRESA = _context.TBT_EMPRESA.Find(id);
 
-            return tBT_EMPRESA;
+            return View(tBT_EMPRESA);
         }
 
-        [HttpDelete]
-        public TBT_EMPRESA Eliminar(int id)
+        [HttpGet("Crear")]
+        public ViewResult Crear()
+        {
+            return View();
+        }
+
+
+        [HttpDelete("Eliminar")]
+        public IActionResult Eliminar(int id)
         {
             var tBT_EMPRESA = _context.TBT_EMPRESA.Find(id);
             if (tBT_EMPRESA != null)
@@ -38,21 +54,34 @@ namespace CrudBasico.Controllers
                 _context.TBT_EMPRESA.Remove(tBT_EMPRESA);
                 _context.SaveChanges();
             }
-            return tBT_EMPRESA;
+            return RedirectToAction("Listar");
         }
-        [HttpPut]
+
+        [HttpPut("Actualizar")]
         public TBT_EMPRESA Actualizar(TBT_EMPRESA tBT_EMPRESA)
         {
             _context.Entry(tBT_EMPRESA).State = EntityState.Modified;
             _context.SaveChanges();
             return tBT_EMPRESA;
         }
-        [HttpPost]
-        public TBT_EMPRESA Guardar(TBT_EMPRESA tBT_EMPRESA)
+
+        [HttpPost("Guardar")]
+        public IActionResult Guardar(TBT_EMPRESA tBT_EMPRESA)
         {
-            _context.TBT_EMPRESA.Add(tBT_EMPRESA);
-            _context.SaveChanges();
-            return tBT_EMPRESA;
+
+            if (tBT_EMPRESA.IDEMPRESA>0)
+            {
+                _context.Entry(tBT_EMPRESA).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            else
+            {
+                _context.TBT_EMPRESA.Add(tBT_EMPRESA);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Listar");
         }
+
+        
     }
 }

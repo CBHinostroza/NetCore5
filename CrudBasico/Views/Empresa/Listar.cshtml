@@ -1,13 +1,14 @@
-﻿@model  List<TBT_EMPRESA>
+﻿@model List<TBT_EMPRESA>
 @{ ViewBag.title = "Listar";}
 <h1>Página Listar Empresa devuelto por el controlador</h1>
+<a class="btn btn-primary" asp-controller="Empresa" asp-action="Crear">Nuevo</a>
 <table class="table table-striped">
     <thead>
         <tr>
             <td>Código</td>
-            <td>Nombres</td>
-            <td>Correo</td>
-            <td>Provincia</td>
+            <td>Empresa</td>
+            <td>Ruc</td>
+            <td>Dirección</td>
             <td>Accion</td>
         </tr>
     </thead>
@@ -15,11 +16,12 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td>@item.id</td>
-            <td>@item.nombres</td>
-            <td>@item.correo</td>
-            <td>@item.provincia</td>
-            <td><a class="btn btn-primary" asp-controller="Home" asp-action="Details" asp-route-id="@item.id">Detalle</a></td>
+            <td>@item.IDEMPRESA</td>
+            <td>@item.NOM_EMPRESA</td>
+            <td>@item.RUC_EMPRESA</td>
+            <td>@item.DIR_EMPRESA</td>
+            <td><a class="btn btn-primary" asp-controller="Empresa" asp-action="Crear" asp-route-id="@item.IDEMPRESA">Editar</a></td>
+            <td><a class="btn btn-danger" asp-controller="Empresa" asp-action="Eliminar" asp-route-id="@item.IDEMPRESA">Eliminar</a></td>
         </tr>
         }
     </tbody>
